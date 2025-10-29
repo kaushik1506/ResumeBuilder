@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><span>Resume</span>Builder</h1>
+            <nav>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container app-container">
+        
+        <div id="form-column">
+            
+            <section class="form-step active-step" data-step="1">
+                <h2><i data-feather="user"></i>Personal Information</h2>
+                <div class="form-group">
+                    <label for="profile-image">Profile Photo</label>
+                    <input type="file" id="profile-image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="e.g., Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="title">Professional Title</label>
+                    <input type="text" id="title" placeholder="e.g., Software Engineer">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="e.g., +1 234 567 890">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="e.g., jane.doe@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile</label>
+                    <input type="text" id="linkedin" placeholder="e.g., linkedin.com/in/janedoe">
+                </div>
+                <div class="form-group">
+                    <label for="github">GitHub Profile</label>
+                    <input type="text" id="github" placeholder="e.g., github.com/janedoe">
+                </div>
+                <div class="form-group">
+                    <label for="summary">Professional Summary</label>
+                    <textarea id="summary" rows="4" placeholder="A brief summary of your career..."></textarea>
+                </div>
+            </section>
+
+            <section class="form-step" data-step="2">
+                <h2><i data-feather="book"></i>Education</h2>
+                <div id="education-list">
+                    </div>
+                <button type="button" class="btn btn-add" id="add-education">
+                    <i data-feather="plus"></i>Add Education
+                </button>
+            </section>
+
+            <section class="form-step" data-step="3">
+                <h2><i data-feather="star"></i>Skills</h2>
+                <div id="skills-list">
+                    </div>
+                <button type="button" class="btn btn-add" id="add-skill">
+                    <i data-feather="plus"></i>Add Skill
+                </button>
+            </section>
+
+            <section class="form-step" data-step="4">
+                <h2><i data-feather="briefcase"></i>Experience</h2>
+                <div id="experience-list">
+                    </div>
+                <button type="button" class="btn btn-add" id="add-experience">
+                    <i data-feather="plus"></i>Add Experience
+                </button>
+            </section>
+
+            <section class="form-step" data-step="5">
+                <h2><i data-feather="target"></i>Projects</h2>
+                <div id="projects-list">
+                    </div>
+                <button type="button" class="btn btn-add" id="add-project">
+                    <i data-feather="plus"></i>Add Project
+                </button>
+            </section>
+            
+            <section class="form-step" data-step="6">
+                <h2><i data-feather="award"></i>Certifications</h2>
+                <div id="certifications-list">
+                    </div>
+                <button type="button" class="btn btn-add" id="add-certification">
+                    <i data-feather="plus"></i>Add Certification
+                </button>
+            </section>
+
+            <div class="form-navigation">
+                <button type="button" class="btn" id="prev-step" disabled>Previous</button>
+                <button type="button" class="btn btn-primary" id="next-step">Next</button>
+            </div>
+
+            <div class="ai-placeholder">
+                <h4><i data-feather="cpu"></i> AI Suggestions</h4>
+                <p>AI-powered suggestions will appear here to help you improve your resume.</p>
+            </div>
+        </div>
+
+        <div id="preview-column">
+            <div class="preview-controls">
+                <h3>Preview & Export</h3>
+                <div class="template-switcher">
+                    <button class="btn template-btn" data-template="template-1">T1</button>
+                    <button class="btn template-btn" data-template="template-2">T2</button>
+                    <button class="btn template-btn" data-template="template-3">T3</button>
+                </div>
+                <div class="export-options">
+                    <button class="btn btn-secondary" id="export-pdf">
+                        <i data-feather="download"></i>Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div id="resume-preview-wrapper">
+                <div id="resume-preview" class="template-1">
+                    </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Created with ❤️ for AWS. Created by Kaushik Varma.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
